@@ -1,11 +1,12 @@
 import './App.css'
+import Header from './components/Header'
 
 function App() {
 
 
   return (
     <>
-      <h1>In Development</h1>
+      <Header />
       <p>Components will be imported and called here</p></>
   )
 }
