@@ -1,5 +1,7 @@
 import './App.css'
 import Header from './components/Header'
+import Main from './components/Main'
+
 
 function App() {
 
@@ -7,7 +9,12 @@ function App() {
   return (
     <>
       <Header />
-      <p>Components will be imported and called here</p></>
+
+      <Main />
+      
+      
+    </>
+      
   )
 }
 
