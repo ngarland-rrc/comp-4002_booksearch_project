@@ -4,51 +4,51 @@ function Main() {
   const books = [
     {
       id: 1,
-      title: 'Book One',
+      title: 'TEF French Foundations – Book 4: Advanced Grammar',
       author: 'Author One',
-      image: 'https://placehold.co/300x400'
+      image: "/assets/book-cover/book1.jpg"
     },
     {
       id: 2,
-      title: 'Book Two',
+      title: 'Learn French Through Dialogues / Conversations',
       author: 'Author Two',
-      image: 'https://placehold.co/300x400'
+      image: "/assets/book-cover/book2.jpg"
     },
     {
       id: 3,
-      title: 'Book Three',
+      title: 'Learning French through natural acquisition',
       author: 'Author Three',
-      image: 'https://placehold.co/300x400'
+      image: "/assets/book-cover/book3.jpg"
     },
     {
       id: 4,
-      title: 'Book Four',
+      title: 'Book 3: The Choice: A Bilingual French Language Grammar',
       author: 'Author Four',
-      image: 'https://placehold.co/300x400'
+      image: "/assets/book-cover/book4.jpg"
     },
     {
       id: 5,
-      title: 'Book Five',
+      title: 'Book 2: The Secrets: A Bilingual French Language Grammar',
       author: 'Author Five',
-      image: 'https://placehold.co/300x400'
+      image: "/assets/book-cover/book5.jpg"
     },
     {
       id: 6,
-      title: 'Book Six',
+      title: 'TEF CANADA EXPRESSION ÉCRITE- 150 Topics To Succeed',
       author: 'Author Six',
-      image: 'https://placehold.co/300x400'
+      image: "/assets/book-cover/book6.jpg"
     },
     {
       id: 7,
-      title: 'Book Seven',
+      title: 'Book 4: The Blossoming: A Bilingual French Language Grammar',
       author: 'Author Seven',
-      image: 'https://placehold.co/300x400'
+      image: "/assets/book-cover/book7.jpg"
     },
     {
       id: 8,
-      title: 'Book Eight',
+      title: 'Book 3: Complex Structures: Future, Conditional, Relative',
       author: 'Author Eight',
-      image: 'https://placehold.co/300x400'
+      image: "/assets/book-cover/book8.jpg"
     }
   ]
 

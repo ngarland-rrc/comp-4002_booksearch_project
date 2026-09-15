@@ -39,7 +39,7 @@ h1 {
 
 .book-card img {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 5;
   object-fit: cover;
 }
 
