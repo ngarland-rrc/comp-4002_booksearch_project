@@ -1,6 +1,8 @@
 import './App.css'
 import Footer from './components/common/footer/Footer'
 import Header from './components/Header'
+import Main from './components/Main'
+
 
 function App() {
 
@@ -8,8 +10,10 @@ function App() {
   return (
     <>
       <Header />
-      <Footer/>
-      <p>Components will be imported and called here</p></>
+      <Main />
+      <Footer />
+    </>
+      
   )
 }
 
