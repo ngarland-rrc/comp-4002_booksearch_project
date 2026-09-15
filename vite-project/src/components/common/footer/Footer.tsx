@@ -16,7 +16,7 @@ function Footer() {
             <li><a href="">Career</a></li>
         </div>
         <div className = "copy-write">
-            Place holder &#169; The Book Search Team, {new Date().getFullYear()}
+            Nick, Lukas, Wei &#169; The Book Search Team, {new Date().getFullYear()}
         </div>
     </footer>);
 }

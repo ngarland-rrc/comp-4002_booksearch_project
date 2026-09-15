@@ -7,3 +7,7 @@ Freeze Purple #e5eaf5
 Medium Purple #d0bdf4
 Purple Pain #8458b3
 Dark Greyish Blue #494d5f
+
+## Fonts
+
+Inter, Lora, Poppins

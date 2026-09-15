@@ -1,6 +1,9 @@
 function Header() {
     return (
         <header>
+            <link rel="preconnect" href="https://rsms.me/"/>
+            <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
+
             <h1>Booksearch</h1>
             <nav className="page-list">
                 <ul>

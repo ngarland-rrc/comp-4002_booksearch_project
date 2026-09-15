@@ -1,10 +1,16 @@
 header {
     padding: 20px;
     background-color: #a0d2eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px
 }
 
 h1 {
     color: black;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
 }
 
 .page-list ul {
@@ -16,6 +22,9 @@ h1 {
     list-style: none;
     gap: 15px;
     border-radius: 20px;
+    font-family: 'Inter', sans-serif; 
+    margin: 0;
+    padding: 10px 20px;
 }
 
 .book-grid {
