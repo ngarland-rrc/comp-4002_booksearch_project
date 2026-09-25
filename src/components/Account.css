@@ -1,0 +1,22 @@
+.account-page {
+  padding: 30px;
+}
+
+.account-panel {
+  width: 300px;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 50px;
+  margin-bottom: 300px;
+}
+
+.account-panel h2 {
+  margin-top: 0;
+}
+
+.home-link{
+    display: block;
+    text-align: left;
+}
