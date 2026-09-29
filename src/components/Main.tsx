@@ -70,7 +70,7 @@ function Main() {
         />
         <button>Search</button>
 
-        <a href="/account">Account</a>
+        <a className="account-link" href="/account">Account</a>
       </div>
 
       <div className="book-grid">

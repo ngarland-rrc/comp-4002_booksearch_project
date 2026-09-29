@@ -89,34 +89,40 @@ function Account() {
             Add Recipient
           </button>
 
-          <h2>Saved Recipients</h2>
+          <div className="saved-recipients">
 
-          {recipients.map((recipient, index) => (
-            <div
-              className="recipient-card"
-              key={index}
-            >
+            <h2>Saved Recipients</h2>
 
-              <p>
-                <strong>Name:</strong> {recipient.name}
-              </p>
+            <div className="recipient-list">
 
-              <p>
-                <strong>Phone:</strong> {recipient.phone}
-              </p>
+              {recipients.map((recipient, index) => (
+                <div
+                  className="recipient-card"
+                  key={index}
+                >
+                  <p>
+                    <strong>Name:</strong> {recipient.name}
+                  </p>
 
-              <p>
-                <strong>Address:</strong> {recipient.address}
-              </p>
+                  <p>
+                    <strong>Phone:</strong> {recipient.phone}
+                  </p>
 
-              <button
-                onClick={() => deleteRecipient(index)}
-              >
-                Delete
-              </button>
+                  <p>
+                    <strong>Address:</strong> {recipient.address}
+                  </p>
+
+                  <button
+                    onClick={() => deleteRecipient(index)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
 
             </div>
-          ))}
+
+          </div>
 
         </section>
       )}

@@ -1,22 +1,175 @@
+
+/* =========================
+   Account page
+   ========================= */
+
 .account-page {
   padding: 30px;
 }
 
+
+/* =========================
+   Home link
+   ========================= */
+
+.home-link {
+  display: block;
+  text-align: left;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
+
+/* =========================
+   Original Account panel
+   ========================= */
+
 .account-panel {
+  box-sizing: border-box;
   width: 300px;
   padding: 25px;
+
   border: 1px solid #ccc;
   border-radius: 10px;
+
   cursor: pointer;
-  margin-top: 50px;
-  margin-bottom: 300px;
+
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 .account-panel h2 {
   margin-top: 0;
 }
 
-.home-link{
-    display: block;
-    text-align: left;
+
+/* =========================
+   Address section
+   ========================= */
+
+.address-section {
+  width: 100%;
+}
+
+
+/* Add Recipient title */
+
+.address-section > h2:first-child {
+  width: 500px;
+  max-width: 90%;
+
+  margin: 0 auto 20px;
+}
+
+
+/* =========================
+   Three input boxes
+   ========================= */
+
+.address-section > input {
+  display: block;
+
+  width: 500px;
+  max-width: 90%;
+
+  box-sizing: border-box;
+
+  padding: 12px;
+
+  margin: 0 auto 15px;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  font-size: 16px;
+}
+
+
+/* =========================
+   Add Recipient button
+   ========================= */
+
+.address-section > button {
+  display: block;
+
+  margin: 5px auto 50px;
+
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+
+/* =========================
+   Saved Recipients
+   ========================= */
+
+.saved-recipients {
+  width: 100%;
+}
+
+.saved-recipients h2 {
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   Recipient list
+   ========================= */
+
+.recipient-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  width: 100%;
+}
+
+
+/* =========================
+   Recipient card
+   ========================= */
+
+.recipient-card {
+  box-sizing: border-box;
+
+  width: calc(50% - 10px);
+
+  padding: 18px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  background-color: #fafafa;
+}
+
+.recipient-card p {
+  margin: 8px 0;
+}
+
+.recipient-card button {
+  margin-top: 10px;
+
+  padding: 8px 14px;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   Small screens
+   ========================= */
+
+@media (max-width: 700px) {
+  .recipient-card {
+    width: 100%;
+  }
 }

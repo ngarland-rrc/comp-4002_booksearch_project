@@ -76,3 +76,7 @@ h1 {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.account-link{
+  text-decoration: none;
+}
