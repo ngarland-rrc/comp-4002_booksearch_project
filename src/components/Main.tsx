@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import "./Main.css"
 
 function Main() {
   const books = [
@@ -68,6 +69,8 @@ function Main() {
           onChange={(e) => setSearch(e.target.value)}
         />
         <button>Search</button>
+
+        <a className="account-link" href="/account">Account</a>
       </div>
 
       <div className="book-grid">

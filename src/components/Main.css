@@ -1,0 +1,82 @@
+header {
+    padding: 20px;
+    background-color: #a0d2eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px
+}
+
+h1 {
+    color: black;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.page-list ul {
+    color: black;
+    font-size: larger;
+    background-color: #e5eaf5;
+    justify-content: center;
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif; 
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.book-card {
+  text-align: center;
+}
+
+.book-card img {
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  object-fit: cover;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.search a {
+  position: absolute;
+  right: 20px;
+}
+
+.search input {
+  width: 400px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.search input:focus {
+  border-color: #666;
+}
+
+.search button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.account-link{
+  text-decoration: none;
+}
