@@ -9,7 +9,6 @@ import Profile from './components/pages/Profile/Profile'
 import News from './components/pages/News'
 import Social from './components/pages/Social';
 
-
 function App() {
   const [message, setMessage] = useState("Hello from Booksearch!")
   const shared = { message, setMessage}
