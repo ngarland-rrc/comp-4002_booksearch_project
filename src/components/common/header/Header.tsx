@@ -15,10 +15,10 @@ function Header() {
                         <Link to="/">BOOKS</Link>
                     </li>
                     <li className="news-header">
-                        NEWS
+                        <Link to="/news">NEWS</Link>
                     </li>
                     <li className="social-header">
-                        SOCIAL
+                        <Link to="/social">SOCIAL</Link>
                     </li>
                     <li className="profile-header">
                         <Link to="/profile">PROFILE</Link>
