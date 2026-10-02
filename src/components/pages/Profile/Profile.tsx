@@ -17,10 +17,10 @@ interface Book {
 //}
 
 const books: Book[] = [
-    { id: 1, title: "Blood Meridian", author: "Cormac McCarthy", cover: "/public/assets/book-cover/blood_meridian_book.png"},
-    { id: 2, title: "The Passenger", author: "Cormac McCarthy", cover: "/public/assets/book-cover/The_Passenger_book.png"},
-    { id: 3, title: "One Flew Over The Cuckoo's Nest", author: "Ken Kesey", cover: "/public/assets/book-cover/ken_kesey_book.jpg"},
-    { id: 4, title: "Dune", author: "Frank Herbert", cover: "/public/assets/book-cover/dune_book.jpg"},
+    { id: 1, title: "Blood Meridian", author: "Cormac McCarthy", cover: "/assets/book-cover/blood_meridian_book.png"},
+    { id: 2, title: "The Passenger", author: "Cormac McCarthy", cover: "/assets/book-cover/The_Passenger_book.png"},
+    { id: 3, title: "One Flew Over The Cuckoo's Nest", author: "Ken Kesey", cover: "/assets/book-cover/ken_kesey_book.jpg"},
+    { id: 4, title: "Dune", author: "Frank Herbert", cover: "/assets/book-cover/dune_book.jpg"},
 ];
 
 // favoriteBooks and currentlyReading share the same example books for now.
@@ -54,7 +54,7 @@ export default function Profile() {
             <section className="profile-section">
                 <div>
                     <h1 className="profile-name">Example Username</h1>
-                    <p className="profile-bio">I love reading books</p>
+                    <p className="profile-bio">I love reading books, this is my bio!</p>
                 </div>
             </section>
 
