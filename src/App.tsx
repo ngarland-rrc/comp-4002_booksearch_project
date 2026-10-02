@@ -4,7 +4,7 @@ import Footer from './components/common/footer/Footer'
 import Header from './components/common/header/Header'
 import Main from './components/Main'
 import Account from './components/Account'
-import Profile from './components/pages/Profile'
+import Profile from './components/pages/Profile/Profile'
 import News from './components/pages/News'
 import Social from './components/pages/Social';
 
