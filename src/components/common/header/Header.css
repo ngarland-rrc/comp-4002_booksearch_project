@@ -1,4 +1,4 @@
-header {
+.parent-header {
     padding: 20px;
     background-color: #a0d2eb;
     display: flex;
@@ -7,7 +7,7 @@ header {
     gap: 25px;
 }
 
-h1 {
+.parent-header h1 {
     color: black;
     font-family: 'Inter', sans-serif;
     margin: 0;

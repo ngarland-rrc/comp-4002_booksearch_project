@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
     return (
-        <header>
+        <header className="parent-header">
             {/* This is the style sheet for the header font, will implement in CSS after routes are working */}
             <link rel="preconnect" href="https://rsms.me/"/>
             <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>

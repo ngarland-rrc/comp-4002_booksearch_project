@@ -19,8 +19,8 @@ interface Book {
 const books: Book[] = [
     { id: 1, title: "Blood Meridian", author: "Cormac McCarthy", cover: "/public/assets/book-cover/blood_meridian_book.png"},
     { id: 2, title: "The Passenger", author: "Cormac McCarthy", cover: "/public/assets/book-cover/The_Passenger_book.png"},
-    { id: 3, title: "One Flew Over The Cuckoo's Nest", author: "Ken Kesey", cover: "/public/assets/book-cover/ken_kesey_book.png"},
-    { id: 4, title: "Dune", author: "Frank Herbert", cover: "/public/assets/book-cover/dune_book.png"},
+    { id: 3, title: "One Flew Over The Cuckoo's Nest", author: "Ken Kesey", cover: "/public/assets/book-cover/ken_kesey_book.jpg"},
+    { id: 4, title: "Dune", author: "Frank Herbert", cover: "/public/assets/book-cover/dune_book.jpg"},
 ];
 
 // favoriteBooks and currentlyReading share the same example books for now.
@@ -51,15 +51,12 @@ function BookDisplay ({ title, books }: { title: string; books: Book[] }) {
 export default function Profile() {
     return (
         <main className="profile">
-            <header className="profile-header">
-                <div className="avatar">
-                    Users Name
-                </div>
+            <section className="profile-section">
                 <div>
-                    <h1>Users Name</h1>
-                    <p className="user-bio">I enjoy reading books</p>
+                    <h1 className="profile-name">Example Username</h1>
+                    <p className="profile-bio">I love reading books</p>
                 </div>
-            </header>
+            </section>
 
             <BookDisplay title="Favorite Books" books={favoriteBooks} />
             <BookDisplay title="Currently Reading" books={currentlyReading} />
