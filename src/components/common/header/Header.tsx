@@ -12,7 +12,7 @@ function Header() {
             <nav className="page-list">
                 <ul>
                     <li className="books-header">
-                        <Link to="/">BOOKS</Link>
+                        <Link to="/books">BOOKS</Link>
                     </li>
                     <li className="news-header">
                         <Link to="/news">NEWS</Link>

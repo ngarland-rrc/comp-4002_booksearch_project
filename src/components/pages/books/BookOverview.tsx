@@ -1,9 +1,11 @@
 import "./BookOverview.css"
-import books from "../books"
+import books from "../../books"
 import { useParams, Link } from 'react-router-dom'
+import SiteMessage from "../../common/sitemessage/SiteMessage";
+import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 
 
-function BookOverview(){
+function BookOverview({ message, setMessage }: SharedStateProps ){
   
   const { id } = useParams()
   const book = books.find((b) => b.id === Number(id))
@@ -13,6 +15,7 @@ function BookOverview(){
       <div>
         <p>Book not found.</p>
         <Link to="/">Back to books</Link>
+        <SiteMessage message={message} setMessage={setMessage} />
       </div>
     )
   }
@@ -26,6 +29,7 @@ function BookOverview(){
         <p>{book.overview}</p>
         <Link to="/">← Back to books</Link>
       </div>
+      <SiteMessage message={message} setMessage={setMessage} />
     </div>
   );
 }
