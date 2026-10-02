@@ -12,15 +12,22 @@ import BookOverview from './components/pages/books/BookOverview'
 
 function App() {
   const [message, setMessage] = useState("Hello from Booksearch!")
-  const shared = { message, setMessage}
+  
+  const [ratings, setRatings] = useState<Record<number, number>>({})
+  
+  const setRating = (bookId: number, value: number) => {
+  setRatings((prev) => ({ ...prev, [bookId]: value }))
+  }
 
+  const shared = { message, setMessage, ratings, setRating }
+  
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<Main {...shared} />} />
         <Route path="/account" element={ <Account /> } />
-        <Route path="/books" element={ <BookOverview {...shared} /> } />
+        <Route path="/books" element={ <Main {...shared} /> } />
         <Route path="/profile" element={<Profile {...shared} />} />
         <Route path="/news" element={<News {...shared} />} />
         <Route path="/social" element={<Social {...shared} />} />
