@@ -4,8 +4,9 @@ import "./Main.css"
 import SiteMessage from './common/sitemessage/SiteMessage';
 import type { SharedStateProps } from './common/sitemessage/SiteMessage';
 import books from "./books"
+import Rating, { type RatingProps } from './common/book_rating/Rating';
 
-function Main({ message, setMessage }: SharedStateProps) {
+function Main({ message, setMessage, ratings,}: SharedStateProps & RatingProps) {
 
   const [search, setSearch] = useState('')
 
@@ -34,6 +35,7 @@ function Main({ message, setMessage }: SharedStateProps) {
             <img src={book.image} alt={book.title} />
             <h2>{book.title}</h2>
             <p>{book.author}</p>
+            <Rating bookId={book.id} ratings={ratings} setRating={() =>{}} />
           </Link>
         ))}
       </div>
