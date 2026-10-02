@@ -12,3 +12,12 @@ h1 {
     font-family: 'Inter', sans-serif;
     margin: 0;
 }
+
+.page-list a {
+    color: black;
+    text-decoration: none;
+}
+
+.page-list a:hover {
+    text-decoration: underline;
+}
