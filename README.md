@@ -16,3 +16,4 @@
 
 - Complete profile feature page, including comment section where you can submit a comment form to add comments, deleting comments implemented as well
 - Add routes to header nav
+- Shared state across pages SiteMessage component

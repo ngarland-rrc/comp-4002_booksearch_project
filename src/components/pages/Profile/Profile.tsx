@@ -1,6 +1,9 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import "./Profile.css";
+import SiteMessage from "../../common/sitemessage/SiteMessage";
+import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
+
 interface Book {
     id: number;
     title: string;
@@ -47,7 +50,7 @@ function BookDisplay ({ title, books }: { title: string; books: Book[] }) {
     );
 }
 
-export default function Profile() {
+export default function Profile({ message, setMessage }: SharedStateProps) {
     const [comments, setComments] = useState<Comment[]>([]);
     const [draft, setDraft] = useState("");
 
@@ -117,6 +120,10 @@ export default function Profile() {
                     </ul>
                 )}
             </section>
+
+            {/* Prop */}
+            <SiteMessage message={message} setMessage={setMessage} />
+
         </main>
     );
 }

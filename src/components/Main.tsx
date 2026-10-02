@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import "./Main.css"
+import SiteMessage from './common/sitemessage/SiteMessage';
+import type { SharedStateProps } from './common/sitemessage/SiteMessage';
 
-function Main() {
+function Main({ message, setMessage }: SharedStateProps) {
   const books = [
     {
       id: 1,
@@ -61,6 +63,7 @@ function Main() {
 
   return (
     <main>
+
       <div className="search">
         <input
           type="text"
@@ -82,6 +85,8 @@ function Main() {
           </div>
         ))}
       </div>
+
+      <SiteMessage message={message} setMessage={setMessage} />
     </main>
   )
 }
