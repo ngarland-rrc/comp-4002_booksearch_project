@@ -1,20 +1,19 @@
-// import { useState } from "react";
-// import type { FormEvent } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import "./Profile.css";
-
 interface Book {
     id: number;
     title: string;
     author: string;
-    // Cover pulled from public imported as string
+    // Cover pulled from /public/assets imported as string
     cover: string;
 }
 
-//interface Comment {
-//    id: number;
-//    text: string;
-//    createdAt: string;
-//}
+interface Comment {
+    id: number;
+    text: string;
+    createdAt: string;
+}
 
 const books: Book[] = [
     { id: 1, title: "Blood Meridian", author: "Cormac McCarthy", cover: "/assets/book-cover/blood_meridian_book.png"},
@@ -49,6 +48,25 @@ function BookDisplay ({ title, books }: { title: string; books: Book[] }) {
 }
 
 export default function Profile() {
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [draft, setDraft] = useState("");
+
+    const addComment = (e: FormEvent) => {
+        e.preventDefault();
+        const text = draft.trim();
+        if (!text) return;
+
+        setComments((prev) => [
+            { id: Date.now(), text, createdAt: new Date().toLocaleString() },
+            ...prev,
+        ]);
+        setDraft("");
+    };
+
+    const deleteComment = (id: number) => {
+        setComments((prev) => prev.filter((c) => c.id !== id));
+    }
+
     return (
         <main className="profile">
             <section className="profile-section">
@@ -60,6 +78,45 @@ export default function Profile() {
 
             <BookDisplay title="Favorite Books" books={favoriteBooks} />
             <BookDisplay title="Currently Reading" books={currentlyReading} />
+
+            <section className="comment-section">
+                <h2>Comments ({comments.length})</h2>
+
+                <form onSubmit={addComment} className="comment-form">
+                    <label htmlFor="comment-input" className="visually-hidden">
+                        Write a comment
+                    </label>
+                    <textarea
+                        id="comment-input"
+                        value={draft}
+                        onChange={(e) => setDraft(e.target.value)}
+                        placeholder="Write a comment..."
+                        rows={3}
+                    />
+                    <button type="submit" disabled={!draft.trim()}>
+                        Post comment
+                    </button>
+                </form>
+
+                {/*Custom message if there are no comments present in comments list*/}
+                {comments.length === 0 ? (
+                    <p className="empty">No comments yet. Be the first to post one!</p>
+                ) : (
+                    <ul className="comment-list">
+                        {comments.map((c) => (
+                            <li key={c.id} className="comment">
+                                <div>
+                                    <p className="comment-text">{c.text}</p>
+                                    <time className="comment-date">{c.createdAt}</time>
+                                </div>
+                                <button type="button" className="delete-button" onClick={() => deleteComment(c.id)}>
+                                    Delete
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </section>
         </main>
-    )
+    );
 }
