@@ -1,0 +1,25 @@
+.overview {
+  display: flex;
+  gap: 2%;
+  flex-wrap: nowrap;
+  align-content: start;
+  background-color: #494d5f;
+}
+
+.cover_img{
+  width: 25%;
+  height: 75%;
+}
+
+.overview_text{
+  flex-grow: 1;
+  height: 75%;
+  text-align: start;
+  color: #a0d2eb ;
+}
+
+.author{
+    margin-bottom: .6rem;
+    font-size: 1.2rem;
+    font-style: italic;
+}
