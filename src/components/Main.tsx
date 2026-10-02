@@ -25,7 +25,7 @@ function Main({ message, setMessage }: SharedStateProps) {
         />
         <button>Search</button>
 
-        <a className="account-link" href="/account">Account</a>
+        <Link className='account-link' to="/account">Account</Link>
       </div>
 
       <div className="book-grid">
