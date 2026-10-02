@@ -1,5 +1,3 @@
-import "./BookOverview.css"
-
 interface Book {
     id: number;
     title: string;
@@ -19,19 +17,4 @@ const books: Book[] = [
   },
 ];
 
-const book = books[0]
-
-function BookOverview(){
-    return (
-    <div className="overview">
-      <img className="cover_img" src={book.image} alt={book.title} />
-      <div className="overview_text">
-        <h2>{book.title}</h2>
-        <p className="author">By: {book.author}</p>
-        <p>{book.overview}</p>
-      </div>
-    </div>
-  );
-}
-
-export default BookOverview;
+export default books
