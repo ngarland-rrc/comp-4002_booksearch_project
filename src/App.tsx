@@ -24,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile {...shared} />} />
         <Route path="/news" element={<News {...shared} />} />
         <Route path="/social" element={<Social {...shared} />} />
+        <Route path="/books/:id" element={<BookOverview {...shared} />} />
       </Routes>
       <Footer />
     </BrowserRouter>
