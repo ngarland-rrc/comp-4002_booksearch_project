@@ -9,11 +9,19 @@ import Profile from './components/pages/Profile/Profile'
 import News from './components/pages/News'
 import Social from './components/pages/Social'
 import BookOverview from './components/pages/books/BookOverview'
+import Rating from './components/common/book_rating/Rating'
 
 function App() {
   const [message, setMessage] = useState("Hello from Booksearch!")
-  const shared = { message, setMessage}
+  
+  const [ratings, setRatings] = useState<Record<number, number>>({})
+  
+  const setRating = (bookId: number, value: number) => {
+  setRatings((prev) => ({ ...prev, [bookId]: value }))
+  }
 
+  const shared = { message, setMessage, ratings, setRating }
+  
   return (
     <BrowserRouter>
       <Header />
