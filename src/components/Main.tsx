@@ -27,6 +27,7 @@ function Main({ message, setMessage, ratings,}: SharedStateProps & RatingProps) 
         <button>Search</button>
 
         <Link className='account-link' to="/account">Account</Link>
+        
       </div>
 
       <div className="book-grid">
