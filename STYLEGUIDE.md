@@ -10,4 +10,4 @@ Dark Greyish Blue #494d5f
 
 ## Fonts
 
-Inter, Lora, Poppins
+Inter, Lora, Fraunces
