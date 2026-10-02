@@ -6,7 +6,7 @@ import type { SharedStateProps } from './common/sitemessage/SiteMessage';
 import books from "./books"
 import Rating, { type RatingProps } from './common/book_rating/Rating';
 
-function Main({ message, setMessage, ratings, setRating }: SharedStateProps & RatingProps) {
+function Main({ message, setMessage, ratings,}: SharedStateProps & RatingProps) {
 
   const [search, setSearch] = useState('')
 
