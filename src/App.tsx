@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main {...shared} />} />
         <Route path="/account" element={ <Account /> } />
-        <Route path="/books" element={ <BookOverview {...shared} /> } />
+        <Route path="/books" element={ <Main {...shared} /> } />
         <Route path="/profile" element={<Profile {...shared} />} />
         <Route path="/news" element={<News {...shared} />} />
         <Route path="/social" element={<Social {...shared} />} />
