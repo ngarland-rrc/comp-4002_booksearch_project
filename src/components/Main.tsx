@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from "react-router"
 import "./Main.css"
 
 function Main() {
@@ -70,7 +71,7 @@ function Main() {
         />
         <button>Search</button>
 
-        <a className="account-link" href="/account">Account</a>
+        <Link className="account-link" href="/account">Account</Link>
       </div>
 
       <div className="book-grid">
