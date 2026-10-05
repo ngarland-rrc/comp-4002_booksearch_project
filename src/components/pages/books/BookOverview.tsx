@@ -1,19 +1,21 @@
 import "./BookOverview.css";
 import React, {useState} from "react";
-import defaultBooks, { type Book, type Review} from "../../books";
+import { type Book, type Review} from "../../books";
 import { useParams, Link } from 'react-router-dom';
 import SiteMessage from "../../common/sitemessage/SiteMessage";
 import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 import Rating from "../../common/book_rating/Rating";
 import type { RatingProps } from "../../common/book_rating/Rating";
-import books from "../../books";
 
 interface BookStateProps {
   books: Book[];
   setBooks: React.Dispatch<React.SetStateAction<Book[]>>;
 }
 
-function BookOverview({books, setBooks, message, setMessage, ratings, setRating}: SharedStateProps & RatingProps & BookStateProps){
+function BookOverview({
+  books, setBooks, 
+  message, setMessage, 
+  ratings, setRating}: SharedStateProps & RatingProps & BookStateProps){
   
   const { id } = useParams()
   const bookIdNumber = Number(id);
@@ -35,11 +37,7 @@ function BookOverview({books, setBooks, message, setMessage, ratings, setRating}
   }
 
   const reviews = book.reviews ?? [];
-  const averageRating =
-    reviews.length > 0
-      ? reviews.reduce((sum, r) => sum + r.userRating, 0) / reviews.length
-      : 0;
-  
+
   const addReview = (e: React.FormEvent) => {
     e.preventDefault();
     if (!text.trim() || !name.trim()) return;
@@ -51,6 +49,7 @@ function BookOverview({books, setBooks, message, setMessage, ratings, setRating}
       userRating: formRating
     };
 
+    //creates review average from reviews in array
     const updated = [newReview, ...reviews];
     const newAverage =
     updated.reduce((sum, r) => sum + r.userRating, 0) / updated.length;
