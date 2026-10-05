@@ -88,8 +88,7 @@ function BookOverview({
       </div>
 
       <section className="review-section">
-        <h2>Reviews ({book.reviews ? book.reviews.length : 0})</h2>
-         
+        <h2>Reviews</h2>
         <form onSubmit={addReview} className="comment-form">
           <div className="rating-row">
             <label>Your Rating: </label>
@@ -123,7 +122,7 @@ function BookOverview({
           </button>
         </form>
        
-        <div className="comments-display-list">
+        <div className="review-display-list">
           {reviews.slice(0, 3).map((review) => (
             <div key={review.id} className="review-card">
               <div className="review-card-header">
