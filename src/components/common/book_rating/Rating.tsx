@@ -16,6 +16,7 @@ function Rating({ bookId, ratings, setRating }: StarsProps) {
     <div className="rating">
       {[1, 2, 3, 4, 5].map((star) => (
         <button
+          type="button"
           key={star}
           className="star"
           onClick={() => setRating(bookId, star)}
