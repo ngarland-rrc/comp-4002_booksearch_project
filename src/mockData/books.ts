@@ -1,21 +1,6 @@
-export interface Review {
-    id: number;
-    reviewerName: string;
-    reviewText: string;
-    userRating: number;
-}
+import type { Book } from "../types/book";
 
-export interface Book {
-    id: number;
-    title: string;
-    author: string;
-    image: string;
-    overview: string;
-    reviews?: Review[];
-}
-
-
-const books: Book[] = [
+const initialBooks: Book[] = [
     {
         id: 1,
         title: 'TEF French Foundations – Book 4: Advanced Grammar',
@@ -82,4 +67,4 @@ const books: Book[] = [
     }
 ];
 
-export default books
+export default initialBooks

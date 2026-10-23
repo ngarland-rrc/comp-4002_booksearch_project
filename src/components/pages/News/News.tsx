@@ -1,5 +1,5 @@
-import SiteMessage from "../common/sitemessage/SiteMessage";
-import type { SharedStateProps } from "../common/sitemessage/SiteMessage";
+import SiteMessage from "../../common/sitemessage/SiteMessage";
+import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 
 function News({ message, setMessage }: SharedStateProps) {
     return (
