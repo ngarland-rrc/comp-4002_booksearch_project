@@ -1,6 +1,7 @@
 import "./BookOverview.css";
 import React, {useState} from "react";
-import { type Book, type Review} from "../../books";
+import type { Book } from "../../../types/book";
+import type { Review } from "../../../types/review";
 import { useParams, Link } from 'react-router-dom';
 import SiteMessage from "../../common/sitemessage/SiteMessage";
 import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
