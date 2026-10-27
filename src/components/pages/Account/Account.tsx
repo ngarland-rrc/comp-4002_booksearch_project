@@ -1,14 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router"
 import "./Account.css"
 import RecipientForm from "../../common/Recipient/RecipientForm"
 import RecipientList from "../../common/Recipient/RecipientList"
-
-type Recipient = {
-  name: string
-  phone: string
-  address: string
-}
+import { recipientService } from "../../../services/AccountAddressService"
+import type { Recipient } from "../../../mockData/mockRecipient"
 
 function Account() {
   const [showAddresses, setShowAddresses] = useState(false)
@@ -17,14 +13,29 @@ function Account() {
   const [address, setAddress] = useState("")
   const [recipients, setRecipients] = useState<Recipient[]>([])
 
+  // Fetch initial recipient data on component mount (with mock data & localStorage fallback)
+  useEffect(() => {
+    const data = recipientService.getRecipients()
+    setRecipients(data)
+  }, [])
+
+  // Add a new recipient, persist it to localStorage, and update state
   const addRecipient = () => {
     if (!name || !phone || !address) return
-    setRecipients([...recipients, { name, phone, address }])
+    
+    // Call service to save the new recipient and get the updated list
+    const updatedList = recipientService.addRecipient({ name, phone, address })
+    
+    // Update local state to trigger a re-render
+    setRecipients(updatedList)
+    
+    // Clear form inputs
     setName("")
     setPhone("")
     setAddress("")
   }
 
+  // Delete a recipient from the list by its index
   const deleteRecipient = (index: number) => {
     setRecipients(recipients.filter((_, i) => i !== index))
   }

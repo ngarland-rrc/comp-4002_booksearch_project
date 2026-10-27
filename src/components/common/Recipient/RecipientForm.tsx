@@ -16,10 +16,10 @@ export default function RecipientForm({
 }: RecipientFormProps) {
   return (
     <section className="address-section">
-      <h2>Add Recipient</h2>
+      <h2>Recipient</h2>
       <input
         type="text"
-        placeholder="Recipient Name"
+        placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
@@ -35,7 +35,7 @@ export default function RecipientForm({
         value={address}
         onChange={(e) => setAddress(e.target.value)}
       />
-      <button onClick={onAdd}>Add Recipient</button>
+      <button onClick={onAdd}>Add</button>
     </section>
   );
 }
