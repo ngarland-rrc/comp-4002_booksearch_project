@@ -2,11 +2,12 @@ import "./BookOverview.css";
 import React, {useState} from "react";
 import type { Book } from "../../../types/book";
 import type { Review } from "../../../types/review";
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SiteMessage from "../../common/sitemessage/SiteMessage";
 import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 import Rating from "../../common/book_rating/Rating";
 import type { RatingProps } from "../../common/book_rating/Rating";
+import { useBook } from "../../../hooks/useBook";
 
 interface BookStateProps {
   books: Book[];
@@ -14,27 +15,28 @@ interface BookStateProps {
 }
 
 function BookOverview({
-  books, setBooks, 
+  setBooks, 
   message, setMessage, 
   ratings, setRating}: SharedStateProps & RatingProps & BookStateProps){
   
-  const { id } = useParams()
-  const bookIdNumber = Number(id);
-
-  const book = books.find((b) => b.id === bookIdNumber);
+  const { book, loading, error } = useBook();
 
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [formRating, setFormRating] = useState(5);
 
-  if (!book) {
+  if (loading) {
+    return <p>Loading book...</p>;
+  }
+
+  if (error || !book) {
     return (
       <div>
-        <p>Book not found.</p>
+        <p>{error ?? "Book not found."}</p>
         <Link to="/">Back to books</Link>
         <SiteMessage message={message} setMessage={setMessage} />
       </div>
-    )
+    );
   }
 
   const reviews = book.reviews ?? [];
@@ -57,7 +59,7 @@ function BookOverview({
 
     setBooks((prevBooks) =>
       prevBooks.map((b) => {
-        if (b.id === bookIdNumber) {
+        if (b.id === book.id) {
           return {
             ...b,
             reviews: [newReview, ...(b.reviews || [])]
@@ -67,7 +69,7 @@ function BookOverview({
       })
     );
 
-    setRating(bookIdNumber, Math.round(newAverage));
+    setRating(book.id, Math.round(newAverage));
 
     setText("");
     setName("");
