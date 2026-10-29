@@ -1,22 +1,9 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
+import type { Book, Comment } from "../../../types/profileBooks";
 import "./Profile.css";
 import SiteMessage from "../../common/sitemessage/SiteMessage";
 import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
-
-interface Book {
-    id: number;
-    title: string;
-    author: string;
-    // Cover pulled from /public/assets imported as string
-    cover: string;
-}
-
-interface Comment {
-    id: number;
-    text: string;
-    createdAt: string;
-}
 
 const books: Book[] = [
     { id: 1, title: "Blood Meridian", author: "Cormac McCarthy", cover: "/assets/book-cover/blood_meridian_book.png"},
