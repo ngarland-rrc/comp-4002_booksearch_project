@@ -16,15 +16,15 @@ export const profileRepository = {
     },
 
     async getFavoriteBooks(): Promise<Book[]> {
-        return { ...mockFavoriteBooks };
+        return [ ...mockFavoriteBooks ];
     },
 
     async getCurrentlyReading(): Promise<Book[]> {
-        return { ...mockCurrentlyReading };
+        return [ ...mockCurrentlyReading ];
     },
 
     async getComments(): Promise<Comment[]> {
-        return { ...comments };
+        return [ ...comments ];
     },
 
     async addComment(text: string): Promise<Comment> {
