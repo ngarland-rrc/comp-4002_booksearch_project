@@ -2,11 +2,13 @@ import "./BookOverview.css";
 import React, {useState} from "react";
 import type { Book } from "../../../types/book";
 import type { Review } from "../../../types/review";
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SiteMessage from "../../common/sitemessage/SiteMessage";
 import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 import Rating from "../../common/book_rating/Rating";
 import type { RatingProps } from "../../common/book_rating/Rating";
+import { useBook } from "../../../hooks/useBook";
+import { bookService } from "../../../services/bookService";
 
 interface BookStateProps {
   books: Book[];
@@ -14,32 +16,33 @@ interface BookStateProps {
 }
 
 function BookOverview({
-  books, setBooks, 
+  setBooks, 
   message, setMessage, 
   ratings, setRating}: SharedStateProps & RatingProps & BookStateProps){
   
-  const { id } = useParams()
-  const bookIdNumber = Number(id);
-
-  const book = books.find((b) => b.id === bookIdNumber);
+  const { book, loading, error, setBook } = useBook();
 
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [formRating, setFormRating] = useState(5);
 
-  if (!book) {
+  if (loading) {
+    return <p>Loading book...</p>;
+  }
+
+  if (error || !book) {
     return (
       <div>
-        <p>Book not found.</p>
+        <p>{error ?? "Book not found."}</p>
         <Link to="/">Back to books</Link>
         <SiteMessage message={message} setMessage={setMessage} />
       </div>
-    )
+    );
   }
 
   const reviews = book.reviews ?? [];
 
-  const addReview = (e: React.FormEvent) => {
+  const addReview = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!text.trim() || !name.trim()) return;
 
@@ -50,28 +53,39 @@ function BookOverview({
       userRating: formRating
     };
 
-    //creates review average from reviews in array
-    const updated = [newReview, ...reviews];
-    const newAverage =
+  // Creates review average from reviews in array
+  const updated = [newReview, ...reviews];
+  const newAverage =
     updated.reduce((sum, r) => sum + r.userRating, 0) / updated.length;
 
-    setBooks((prevBooks) =>
-      prevBooks.map((b) => {
-        if (b.id === bookIdNumber) {
-          return {
-            ...b,
-            reviews: [newReview, ...(b.reviews || [])]
-          };
-        }
-        return b;
-      })
-    );
+  // Creates updated book with the new review
+  const updatedBook: Book = {
+    ...book,
+    reviews: updated
+  };
 
-    setRating(bookIdNumber, Math.round(newAverage));
+  // Saves updated book through the service
+  const savedBook = await bookService.updateBook(book.id, updatedBook);
 
-    setText("");
-    setName("");
-    setFormRating(5);
+  if (!savedBook) {
+    return;
+  }
+
+  setBook(savedBook);
+
+  // Updates the parent books array
+  setBooks((prevBooks) =>
+    prevBooks.map((b) =>
+      b.id === savedBook.id ? savedBook : b
+    )
+  );
+
+  setRating(book.id, Math.round(newAverage));
+
+  setText("");
+  setName("");
+  setFormRating(5);
+  
   };
 
     return (
