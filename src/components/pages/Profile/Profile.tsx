@@ -5,16 +5,6 @@ import "./Profile.css";
 import SiteMessage from "../../common/sitemessage/SiteMessage";
 import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 
-const books: Book[] = [
-    { id: 1, title: "Blood Meridian", author: "Cormac McCarthy", cover: "/assets/book-cover/blood_meridian_book.png"},
-    { id: 2, title: "The Passenger", author: "Cormac McCarthy", cover: "/assets/book-cover/The_Passenger_book.png"},
-    { id: 3, title: "One Flew Over The Cuckoo's Nest", author: "Ken Kesey", cover: "/assets/book-cover/ken_kesey_book.jpg"},
-    { id: 4, title: "Dune", author: "Frank Herbert", cover: "/assets/book-cover/dune_book.jpg"},
-];
-
-// favoriteBooks and currentlyReading share the same example books for now.
-const favoriteBooks: Book[] = books;
-const currentlyReading: Book[] = books;
 
 function BookDisplay ({ title, books }: { title: string; books: Book[] }) {
     return (
