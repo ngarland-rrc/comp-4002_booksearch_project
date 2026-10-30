@@ -1,4 +1,4 @@
-# Profile Architechture
+# Profile Architecture
 
 ## Author
 
@@ -27,12 +27,12 @@ profileService.ts
 
 ### What does the service do?
 
-Services holds all business logic so I implented that for my profile service. loadProfile fetches the profile, both book lists, and the comments from the repository,
+Services holds all business logic so I implemented that for my profile service. loadProfile fetches the profile, both book lists, and the comments from the repository,
 sorts the comments newest first and converts each comment into a display ready CommentView with a formatted date, addComment trims the text. deleteComment passes the delete request through to the repository.
 
 ### How did i decide what logic to include in the service?
 
-All valdiation, sorting, and formatting. This allows for a nice neat place for all business logic to exist without touching React or the future database
+All validation, sorting, and formatting. This allows for a nice neat place for all business logic to exist without touching React or the future database
 
 ### Where is this service made use of in the project and how?
 
@@ -49,7 +49,7 @@ The repository is our data access layer. It returns profile info and books lists
 
 ### How did i decide what logic to include in the repository?
 
-The repository is whell all data access takes place so all of my methods are async and return copies of the data (mock data for now). Through my repository my profile page behaves as if it were interacting with a real backend, except my few examples of mock data are fetched instantly. Mock data and local arrays will be replaced with real API calls.
+The repository is where all data access takes place so all of my methods are async and return copies of the data (mock data for now). Through my repository my profile page behaves as if it were interacting with a real backend, except my few examples of mock data are fetched instantly. Mock data and local arrays will be replaced with real API calls.
 
 ### Where is this repository made use of in the project and how?
 
