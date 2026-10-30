@@ -26,6 +26,11 @@ function sortNewestFirst(comments: Comment[]): Comment[] {
 // as well as adding and deleting comments
 export const profileService = {
     async loadProfile(): Promise<ProfileData> {
+
+        // TEMP TEMP TEMP!: I'm adding a fake 2 second delay here to test the load state,
+        // and I think its a cool feature until real database interaction is implemented.
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        
         const [profile, favoriteBooks, currentlyReading, comments] = await Promise.all([
             profileRepository.getProfile(),
             profileRepository.getCurrentlyReading(),
