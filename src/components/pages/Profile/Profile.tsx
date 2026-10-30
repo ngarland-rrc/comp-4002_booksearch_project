@@ -1,33 +1,10 @@
-import { useState } from "react";
 import type { FormEvent } from "react";
 import "./Profile.css";
 import SiteMessage from "../../common/sitemessage/SiteMessage";
 import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
-
-interface Book {
-    id: number;
-    title: string;
-    author: string;
-    // Cover pulled from /public/assets imported as string
-    cover: string;
-}
-
-interface Comment {
-    id: number;
-    text: string;
-    createdAt: string;
-}
-
-const books: Book[] = [
-    { id: 1, title: "Blood Meridian", author: "Cormac McCarthy", cover: "/assets/book-cover/blood_meridian_book.png"},
-    { id: 2, title: "The Passenger", author: "Cormac McCarthy", cover: "/assets/book-cover/The_Passenger_book.png"},
-    { id: 3, title: "One Flew Over The Cuckoo's Nest", author: "Ken Kesey", cover: "/assets/book-cover/ken_kesey_book.jpg"},
-    { id: 4, title: "Dune", author: "Frank Herbert", cover: "/assets/book-cover/dune_book.jpg"},
-];
-
-// favoriteBooks and currentlyReading share the same example books for now.
-const favoriteBooks: Book[] = books;
-const currentlyReading: Book[] = books;
+import { useProfile } from "../../../hooks/useProfile";
+import type { Book } from "../../../types/profileBooks";
+ 
 
 function BookDisplay ({ title, books }: { title: string; books: Book[] }) {
     return (
@@ -51,31 +28,36 @@ function BookDisplay ({ title, books }: { title: string; books: Book[] }) {
 }
 
 export default function Profile({ message, setMessage }: SharedStateProps) {
-    const [comments, setComments] = useState<Comment[]>([]);
-    const [draft, setDraft] = useState("");
+    const {
+        profile,
+        favoriteBooks,
+        currentlyReading,
+        comments,
+        draft,
+        setDraft,
+        loading,
+        error,
+        addComment,
+        deleteComment,
+    } = useProfile();
 
-    const addComment = (e: FormEvent) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        const text = draft.trim();
-        if (!text) return;
-
-        setComments((prev) => [
-            { id: Date.now(), text, createdAt: new Date().toLocaleString() },
-            ...prev,
-        ]);
-        setDraft("");
+        void addComment();
     };
 
-    const deleteComment = (id: number) => {
-        setComments((prev) => prev.filter((c) => c.id !== id));
-    }
+    // Loading profile message
+    if (loading) return <main className="profle"><p>Loading profile...</p></main>
 
+    // Add new error section at the top of the page
     return (
         <main className="profile">
+            {error && <p role="alert">{error}</p>}
+
             <section className="profile-section">
                 <div>
-                    <h1 className="profile-name">Example Username</h1>
-                    <p className="profile-bio">I love reading books, this is my bio!</p>
+                    <h1 className="profile-name">{profile?.username}</h1>
+                    <p className="profile-bio">{profile?.bio}</p>
                 </div>
             </section>
 
@@ -85,7 +67,7 @@ export default function Profile({ message, setMessage }: SharedStateProps) {
             <section className="comment-section">
                 <h2>Comments ({comments.length})</h2>
 
-                <form onSubmit={addComment} className="comment-form">
+                <form onSubmit={handleSubmit} className="comment-form">
                     <label htmlFor="comment-input" className="visually-hidden">
                         Write a comment
                     </label>
@@ -123,7 +105,6 @@ export default function Profile({ message, setMessage }: SharedStateProps) {
 
             {/* Prop */}
             <SiteMessage message={message} setMessage={setMessage} />
-
         </main>
     );
 }

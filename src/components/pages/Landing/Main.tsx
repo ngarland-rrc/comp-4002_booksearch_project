@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./Main.css"
-import SiteMessage from './common/sitemessage/SiteMessage';
-import type { SharedStateProps } from './common/sitemessage/SiteMessage';
-import books from "./books"
-import Rating, { type RatingProps } from './common/book_rating/Rating';
+import SiteMessage from '../../common/sitemessage/SiteMessage'
+import type { SharedStateProps } from '../../common/sitemessage/SiteMessage';
+import initialBooks from '../../../mockData/books';
+import Rating, { type RatingProps } from '../../common/book_rating/Rating';
 
 function Main({ message, setMessage, ratings,}: SharedStateProps & RatingProps) {
 
   const [search, setSearch] = useState('')
 
-  const filteredBooks = books.filter((book) =>
+  const filteredBooks = initialBooks.filter((book) =>
     book.title.toLowerCase().includes(search.toLowerCase())
   )
 
