@@ -43,6 +43,13 @@
     gap: 0.5rem;
 }
 
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
 .page-list a {
     display: block;
     padding: 0.5rem 1.1rem;
@@ -77,6 +84,152 @@
     }
 
     .page-list ul {
+        justify-content: center;
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.user-greeting {
+    min-height: 2.25rem;
+    font-family: "Inter", sans-serif;
+    color: var(--dark-blue-grey);
+}
+
+.username-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.username-form input {
+    padding: 0.45rem 0.9rem;
+    border: 2px solid var(--purple-pain);
+    border-radius: 999px;
+    background: var(--freeze-purple);
+    color: var(--dark-blue-grey);
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+}
+
+.username-form input::placeholder {
+    color: var(--dark-blue-grey);
+    opacity: 0.7;
+}
+
+.username-form input:focus-visible {
+    outline: 3px solid var(--dark-blue-grey);
+    outline-offset: 2px;
+}
+
+.username-form input[aria-invalid="true"] {
+    border-color: #9b1c1c;
+}
+
+.username-form button {
+    padding: 0.45rem 1rem;
+    border: 2px solid var(--purple-pain);
+    border-radius: 999px;
+    background: var(--purple-pain);
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.username-form button:hover:not(:disabled) {
+    background: var(--dark-blue-grey);
+    border-color: var(--dark-blue-grey);
+}
+
+.username-form button:focus-visible {
+    outline: 3px solid var(--dark-blue-grey);
+    outline-offset: 2px;
+}
+
+.username-form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.username-form button[type="button"] {
+    background: transparent;
+    color: var(--dark-blue-grey);
+}
+
+.username-form button[type="button"]:hover {
+    background: var(--freeze-purple);
+    border-color: var(--purple-pain);
+}
+
+.username-error {
+    flex-basis: 100%;
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #9b1c1c;
+}
+
+.username-hello {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.username-hello strong {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+}
+
+.username-edit {
+    margin-left: 0.6rem;
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--purple-pain);
+    font-family: "Inter", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.username-edit:hover {
+    color: var(--dark-blue-grey);
+}
+
+.username-edit:focus-visible {
+    outline: 3px solid var(--dark-blue-grey);
+    outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    .parent-header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .page-list ul {
+        justify-content: center;
+    }
+
+    .user-greeting {
+        text-align: center;
+    }
+
+    .username-form {
         justify-content: center;
     }
 }
