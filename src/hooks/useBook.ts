@@ -58,5 +58,5 @@ export function useBook() {
   }, [id,bookId]);
 
 
-  return { book, loading, error};
+  return { book, loading, error, setBook};
 }

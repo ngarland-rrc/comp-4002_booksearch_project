@@ -8,6 +8,7 @@ import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 import Rating from "../../common/book_rating/Rating";
 import type { RatingProps } from "../../common/book_rating/Rating";
 import { useBook } from "../../../hooks/useBook";
+import { bookService } from "../../../services/bookService";
 
 interface BookStateProps {
   books: Book[];
@@ -19,7 +20,7 @@ function BookOverview({
   message, setMessage, 
   ratings, setRating}: SharedStateProps & RatingProps & BookStateProps){
   
-  const { book, loading, error } = useBook();
+  const { book, loading, error, setBook } = useBook();
 
   const [text, setText] = useState("");
   const [name, setName] = useState("");
@@ -41,7 +42,7 @@ function BookOverview({
 
   const reviews = book.reviews ?? [];
 
-  const addReview = (e: React.FormEvent) => {
+  const addReview = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!text.trim() || !name.trim()) return;
 
@@ -52,28 +53,39 @@ function BookOverview({
       userRating: formRating
     };
 
-    //creates review average from reviews in array
-    const updated = [newReview, ...reviews];
-    const newAverage =
+  // Creates review average from reviews in array
+  const updated = [newReview, ...reviews];
+  const newAverage =
     updated.reduce((sum, r) => sum + r.userRating, 0) / updated.length;
 
-    setBooks((prevBooks) =>
-      prevBooks.map((b) => {
-        if (b.id === book.id) {
-          return {
-            ...b,
-            reviews: [newReview, ...(b.reviews || [])]
-          };
-        }
-        return b;
-      })
-    );
+  // Creates updated book with the new review
+  const updatedBook: Book = {
+    ...book,
+    reviews: updated
+  };
 
-    setRating(book.id, Math.round(newAverage));
+  // Saves updated book through the service
+  const savedBook = await bookService.updateBook(book.id, updatedBook);
 
-    setText("");
-    setName("");
-    setFormRating(5);
+  if (!savedBook) {
+    return;
+  }
+
+  setBook(savedBook);
+
+  // Updates the parent books array
+  setBooks((prevBooks) =>
+    prevBooks.map((b) =>
+      b.id === savedBook.id ? savedBook : b
+    )
+  );
+
+  setRating(book.id, Math.round(newAverage));
+
+  setText("");
+  setName("");
+  setFormRating(5);
+  
   };
 
     return (

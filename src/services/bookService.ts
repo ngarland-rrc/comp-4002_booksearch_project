@@ -15,4 +15,11 @@ export const bookService = {
 
         return bookRepository.getById(id);
     },
-}
+
+    async updateBook(id: number, updatedBook: Book): Promise<Book | null> {
+        if (!Number.isInteger(id) || id < 1) {
+            return null;
+        }
+        return bookRepository.update(id, updatedBook);
+    },
+};
