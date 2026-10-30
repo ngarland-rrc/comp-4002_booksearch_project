@@ -17,5 +17,7 @@ const books: Book[] = [
         cover: "/assets/book-cover/dune_book.jpg"},
 ];
 
+
+// mockFavoriteBooks and mockCurrentlyReading both pull from the same mock data for now.
 export const mockFavoriteBooks: Book[] = books;
 export const mockCurrentlyReading: Book[] = books;
