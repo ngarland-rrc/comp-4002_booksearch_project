@@ -1,7 +1,5 @@
 import type { FormEvent } from "react";
 import "./Profile.css";
-import SiteMessage from "../../common/sitemessage/SiteMessage";
-import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 import { useProfile } from "../../../hooks/useProfile";
 import type { Book } from "../../../types/profileBooks";
  
@@ -27,7 +25,7 @@ function BookDisplay ({ title, books }: { title: string; books: Book[] }) {
     );
 }
 
-export default function Profile({ message, setMessage }: SharedStateProps) {
+export default function Profile() {
     const {
         profile,
         favoriteBooks,
@@ -102,9 +100,6 @@ export default function Profile({ message, setMessage }: SharedStateProps) {
                     </ul>
                 )}
             </section>
-
-            {/* Prop */}
-            <SiteMessage message={message} setMessage={setMessage} />
         </main>
     );
 }

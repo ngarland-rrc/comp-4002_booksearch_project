@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./Main.css"
-import SiteMessage from '../../common/sitemessage/SiteMessage'
-import type { SharedStateProps } from '../../common/sitemessage/SiteMessage';
 import initialBooks from '../../../mockData/books';
 import Rating, { type RatingProps } from '../../common/book_rating/Rating';
 
-function Main({ message, setMessage, ratings,}: SharedStateProps & RatingProps) {
+function Main({ ratings,}: RatingProps) {
 
   const [search, setSearch] = useState('')
 
@@ -41,7 +39,6 @@ function Main({ message, setMessage, ratings,}: SharedStateProps & RatingProps) 
         ))}
       </div>
 
-      <SiteMessage message={message} setMessage={setMessage} />
     </main>
   )
 }
