@@ -57,7 +57,7 @@ export default function Profile({ message, setMessage }: SharedStateProps) {
             <section className="profile-section">
                 <div>
                     <h1 className="profile-name">{profile?.username}</h1>
-                    <p className="profile-bio">{profile?.username}</p>
+                    <p className="profile-bio">{profile?.bio}</p>
                 </div>
             </section>
 
