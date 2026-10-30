@@ -21,15 +21,16 @@ export const bookRepository = {
   },
 
   async update(id: number, updatedBook: Book): Promise<Book | null> {
-  const index = books.findIndex((book) => book.id === id);
-
-  if (index === -1) {
-    return null;
-  }
-
-  books[index] = { ...updatedBook };
-
-  return { ...books[index] };
+    const index = books.findIndex((book) => book.id === id);
+    
+    if (index === -1) {
+      
+      return null;
+    }
+    
+    books[index] = { ...updatedBook };
+    
+    return { ...books[index] };
   },
 
 };
