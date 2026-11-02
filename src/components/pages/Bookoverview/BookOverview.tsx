@@ -3,8 +3,6 @@ import React, {useState} from "react";
 import type { Book } from "../../../types/book";
 import type { Review } from "../../../types/review";
 import { Link } from 'react-router-dom';
-import SiteMessage from "../../common/sitemessage/SiteMessage";
-import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 import Rating from "../../common/book_rating/Rating";
 import type { RatingProps } from "../../common/book_rating/Rating";
 import { useBook } from "../../../hooks/useBook";
@@ -17,8 +15,7 @@ interface BookStateProps {
 
 function BookOverview({
   setBooks, 
-  message, setMessage, 
-  ratings, setRating}: SharedStateProps & RatingProps & BookStateProps){
+  ratings, setRating}: RatingProps & BookStateProps){
   
   const { book, loading, error, setBook } = useBook();
 
@@ -35,7 +32,6 @@ function BookOverview({
       <div>
         <p>{error ?? "Book not found."}</p>
         <Link to="/">Back to books</Link>
-        <SiteMessage message={message} setMessage={setMessage} />
       </div>
     );
   }
@@ -149,7 +145,6 @@ function BookOverview({
           ))}
         </div>
       </section>
-      <SiteMessage message={message} setMessage={setMessage} />
     </div>
   );
 }
