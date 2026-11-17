@@ -1,4 +1,4 @@
-import type { Book } from "../types/book";
+import type { Book } from "../../../../shared/types/book";
 import { bookRepository } from "../repositories/bookRepo";
 
 export const bookService = {

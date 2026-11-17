@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { profileService } from "../services/profileService";
-import type { Book, CommentView, ProfileInfo } from "../types/profileBooks";
+import type { Book, CommentView, ProfileInfo } from "../../../../shared/types/profileBooks";
 
 export function useProfile() {
     const [profile, setProfile] = useState<ProfileInfo | null>(null);

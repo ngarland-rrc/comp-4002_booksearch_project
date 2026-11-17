@@ -1,5 +1,5 @@
 import { profileRepository } from "../repositories/profileRepository";
-import type { Book, Comment, CommentView, ProfileInfo } from "../types/profileBooks";
+import type { Book, Comment, CommentView, ProfileInfo } from "../../../../shared/types/profileBooks";
 
 export interface ProfileData {
     profile: ProfileInfo;

@@ -1,7 +1,7 @@
 import type { FormEvent } from "react";
 import "./Profile.css";
 import { useProfile } from "../../../hooks/useProfile";
-import type { Book } from "../../../types/profileBooks";
+import type { Book } from "../../../../../../shared/types/profileBooks";
  
 
 function BookDisplay ({ title, books }: { title: string; books: Book[] }) {

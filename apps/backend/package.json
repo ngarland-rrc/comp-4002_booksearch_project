@@ -1,0 +1,7 @@
+{
+  "name": "@book-search/backend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node --watch server.js"
+  }
+}

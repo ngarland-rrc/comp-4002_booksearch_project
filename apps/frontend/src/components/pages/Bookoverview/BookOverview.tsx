@@ -1,7 +1,7 @@
 import "./BookOverview.css";
 import React, {useState} from "react";
-import type { Book } from "../../../types/book";
-import type { Review } from "../../../types/review";
+import type { Book } from "../../../../../../shared/types/book";
+import type { Review } from "../../../../../../shared/types/review";
 import { Link } from 'react-router-dom';
 import Rating from "../../common/book_rating/Rating";
 import type { RatingProps } from "../../common/book_rating/Rating";
