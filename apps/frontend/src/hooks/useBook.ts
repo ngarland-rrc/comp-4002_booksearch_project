@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import type { Book } from "../types/book";
+import type { Book } from "../../../../shared/types/book";
 import { bookService } from "../services/bookService";
 
 export function useBook() {

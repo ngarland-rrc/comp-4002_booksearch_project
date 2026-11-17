@@ -10,7 +10,7 @@ import News from './components/pages/News/News'
 import Social from './components/pages/Social/Social'
 import BookOverview from './components/pages/Bookoverview/BookOverview'
 import initialBooks from './mockData/books'
-import type { Book } from './types/book'
+import type { Book } from '../../../shared/types/book'
 
 function App() {
   const [message, setMessage] = useState("Hello from Booksearch!")

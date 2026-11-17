@@ -3,7 +3,7 @@ import "./Profile.css";
 import SiteMessage from "../../common/sitemessage/SiteMessage";
 import type { SharedStateProps } from "../../common/sitemessage/SiteMessage";
 import { useProfile } from "../../../hooks/useProfile";
-import type { Book } from "../../../types/profileBooks";
+import type { Book } from "../../../../../../shared/types/profileBooks";
  
 
 function BookDisplay ({ title, books }: { title: string; books: Book[] }) {

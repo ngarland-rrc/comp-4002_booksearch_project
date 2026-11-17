@@ -1,4 +1,4 @@
-import type { Book, Comment, ProfileInfo } from "../types/profileBooks";
+import type { Book, Comment, ProfileInfo } from "../../../../shared/types/profileBooks";
 import {
     mockCurrentlyReading,
     mockFavoriteBooks,

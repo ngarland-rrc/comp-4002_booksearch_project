@@ -1,5 +1,5 @@
 import  initialBooks from "../mockData/books"
-import type { Book } from "../types/book"
+import type { Book } from "../../../../shared/types/book"
 
 let books: Book[] = initialBooks.map((book) => ({
     ...book,

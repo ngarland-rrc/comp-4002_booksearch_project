@@ -1,4 +1,4 @@
-import type { Book, ProfileInfo } from "../types/profileBooks";
+import type { Book, ProfileInfo } from "../../../../shared/types/profileBooks";
 
 export const mockProfile: ProfileInfo = {
     username: "Example Username",
