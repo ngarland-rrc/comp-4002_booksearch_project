@@ -6,6 +6,7 @@ export interface BookSummary {
     author: string;
     cover: string;
 }
+
 export interface Book extends BookSummary {
     overview: string;
     reviews: Review[];

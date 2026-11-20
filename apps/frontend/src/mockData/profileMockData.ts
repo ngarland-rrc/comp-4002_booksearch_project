@@ -1,4 +1,5 @@
-import type { Book, ProfileInfo } from "../../../../shared/types/profileBooks";
+import type { ProfileInfo } from "../../../../shared/types/profile";
+import type { BookSummary } from "../../../../shared/types/book";
 
 export const mockProfile: ProfileInfo = {
     username: "Example Username",
@@ -6,7 +7,7 @@ export const mockProfile: ProfileInfo = {
 };
 
 // Mock book array from old profile page
-const books: Book[] = [
+const books: BookSummary[] = [
     { id : 1, title: "Blood Meridian", author: "Cormac McCarthy", 
         cover: "/assets/book-cover/blood_meridian_book.png"},
     { id : 2, title: "The Passenger", author: "Cormac McCarthy", 
@@ -19,5 +20,5 @@ const books: Book[] = [
 
 
 // mockFavoriteBooks and mockCurrentlyReading both pull from the same mock data for now.
-export const mockFavoriteBooks: Book[] = books;
-export const mockCurrentlyReading: Book[] = books;
+export const mockFavoriteBooks: BookSummary[] = books;
+export const mockCurrentlyReading: BookSummary[] = books;
