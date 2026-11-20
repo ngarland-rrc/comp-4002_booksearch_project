@@ -12,3 +12,37 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Book {
+  id Int @id @default(autoincrement())
+  title String
+  author String
+  cover String
+  overview String
+  reviews Review[]
+}
+
+model Review {
+  id     Int    @id @default(autoincrement())
+  reviewerName String
+  reviewText String
+  userRating Int
+  bookId Int
+  book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@index([bookId])
+}
+
+model Comment {
+  id       Int    @id @default(autoincrement())
+  text     String
+  createdAt DateTime @default(now())
+}
+
+model Recipient {
+  id String @id @default(uuid())
+  name String
+  phone String
+  address String
+
+}
