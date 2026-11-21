@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import type { Request, Response, NextFunction } from "express";
+import accountAddressRouter from './routes/AccountAddressRoutes';
 
 const app = express();
 
@@ -14,6 +15,7 @@ if (!frontendUrl) {
 
 app.use(cors({ origin: frontendUrl }));
 app.use(express.json());
+app.use('/api/addresses', accountAddressRouter);
 
 // Error handling middleware
 app.use((

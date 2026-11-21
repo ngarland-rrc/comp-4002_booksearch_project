@@ -1,27 +1,36 @@
 import type { Recipient } from '../mockData/mockRecipient';
 
-const STORAGE_KEY = 'user_recipients_list';
+const API_URL = '/api/addresses';
 
 export const accountAddressRepository = {
   /**
-   * Retrieve raw recipient data from localStorage.
+   * Fetch all recipient records from the backend API.
    */
-  getStoredRecipients(): Recipient[] | null {
-    const savedData = localStorage.getItem(STORAGE_KEY);
-    if (!savedData) return null;
-    
-    try {
-      return JSON.parse(savedData);
-    } catch (e) {
-      console.error('Failed to parse local storage data', e);
-      return null;
+  async getRecipients(): Promise<Recipient[]> {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error('Failed to fetch addresses from backend');
     }
+    return await response.json();
   },
 
   /**
-   * Save the recipient list to localStorage.
+   * Send a POST request to create a new recipient in the backend database.
    */
-  saveRecipients(recipients: Recipient[]): void {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(recipients));
+  async createRecipient(newRecipientData: Omit<Recipient, 'id'>): Promise<Recipient> {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newRecipientData),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to create recipient');
+    }
+
+    return await response.json();
   }
 };
