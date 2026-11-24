@@ -1,26 +1,17 @@
-import { PrismaClient } from '@prisma/client'
+import 'dotenv/config'
+import { PrismaPg } from '@prisma/adapter-pg'
 import { faker } from '@faker-js/faker'
+// Assumes this file is at prisma/seed.ts
+import { PrismaClient } from '../src/generated/prisma/client.ts'
  
-const prisma = new PrismaClient()
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL })
+const prisma = new PrismaClient({ adapter })
  
-const PROFILE_COUNT = 5
 const COMMENT_COUNT = 30
  
 async function main() {
-  // Clear existing data so the seed can be re-run safely
+  // Clear existing comments so the seed can be re-run safely
   await prisma.comment.deleteMany()
-  await prisma.profile.deleteMany()
- 
-  // ProfileInfo { username, bio }
-  const profiles = Array.from({ length: PROFILE_COUNT }, () => ({
-    username: faker.internet.username().toLowerCase(),
-    bio: faker.lorem.sentence({ min: 6, max: 14 }),
-  }))
- 
-  await prisma.profile.createMany({
-    data: profiles,
-    skipDuplicates: true,
-  })
  
   // Comment { text, createdAt } (id is auto-generated)
   // CommentView.displayDate is derived at read time, so it isn't stored.
@@ -31,9 +22,7 @@ async function main() {
  
   await prisma.comment.createMany({ data: comments })
  
-  console.log(
-    `Seeded ${PROFILE_COUNT} profiles and ${COMMENT_COUNT} comments.`
-  )
+  console.log(`Seeded ${COMMENT_COUNT} comments.`)
 }
  
 main()
@@ -44,3 +33,4 @@ main()
   .finally(async () => {
     await prisma.$disconnect()
   })
+ 
