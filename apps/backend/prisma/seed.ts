@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import { PrismaPg } from '@prisma/adapter-pg'
 import { faker } from '@faker-js/faker'
-// Assumes this file is at prisma/seed.ts
+// prisma/seed.ts
 import { PrismaClient } from '../src/generated/prisma/client.ts'
  
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL })
