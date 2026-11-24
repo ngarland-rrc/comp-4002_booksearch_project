@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=booksearch
+      - POSTGRES_PASSWORD=booksearchdevteam
+      - POSTGRES_DB=booksearch
+    ports:
+      - '5433:5432'
+    volumes:
+      - booksearch_data:/var/lib/postgresql/data
+
+volumes:
+  booksearch_data:

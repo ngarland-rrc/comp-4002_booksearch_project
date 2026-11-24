@@ -1,10 +1,11 @@
 import { profileRepository } from "../repositories/profileRepository";
-import type { Book, Comment, CommentView, ProfileInfo } from "../../../../shared/types/profileBooks";
+import type { Comment, CommentView, ProfileInfo } from "../../../../shared/types/profile";
+import type { BookSummary } from "../../../../shared/types/book";
 
 export interface ProfileData {
     profile: ProfileInfo;
-    favoriteBooks: Book[];
-    currentlyReading: Book[];
+    favoriteBooks: BookSummary[];
+    currentlyReading: BookSummary[];
     comments: CommentView[];
 }
 
@@ -34,7 +35,7 @@ export const profileService = {
         const [profile, favoriteBooks, currentlyReading, comments] = await Promise.all([
             profileRepository.getProfile(),
             profileRepository.getCurrentlyReading(),
-            profileRepository.getCurrentlyReading(),
+            profileRepository.getFavoriteBooks(),
             profileRepository.getComments(),
         ]);
 

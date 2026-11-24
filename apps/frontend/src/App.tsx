@@ -32,9 +32,9 @@ function App() {
         <Route path="/" element={<Main {...shared} />} />
         <Route path="/account" element={ <Account /> } />
         <Route path="/books" element={ <Main {...shared} /> } />
-        <Route path="/profile" element={<Profile {...shared} />} />
-        <Route path="/news" element={<News {...shared} />} />
-        <Route path="/social" element={<Social {...shared} />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/social" element={<Social />} />
         <Route path="/books/:id" element={<BookOverview {...shared} />} />
       </Routes>
       <Footer />

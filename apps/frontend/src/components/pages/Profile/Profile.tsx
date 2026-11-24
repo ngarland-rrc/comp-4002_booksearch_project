@@ -1,10 +1,10 @@
 import type { FormEvent } from "react";
 import "./Profile.css";
 import { useProfile } from "../../../hooks/useProfile";
-import type { Book } from "../../../../../../shared/types/profileBooks";
+import type { BookSummary } from "../../../../../../shared/types/book";
  
 
-function BookDisplay ({ title, books }: { title: string; books: Book[] }) {
+function BookDisplay ({ title, books }: { title: string; books: BookSummary[] }) {
     return (
         <section className="profile-section">
             <h2>{title}</h2>

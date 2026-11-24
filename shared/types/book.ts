@@ -1,10 +1,13 @@
 import type { Review } from "./review";
 
-export interface Book {
+export interface BookSummary {
     id: number;
     title: string;
     author: string;
-    image: string;
+    cover: string;
+}
+
+export interface Book extends BookSummary {
     overview: string;
-    reviews?: Review[];
+    reviews: Review[];
 }

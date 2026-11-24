@@ -1,4 +1,5 @@
-import type { Book, Comment, ProfileInfo } from "../../../../shared/types/profileBooks";
+import type { Comment, ProfileInfo } from "../../../../shared/types/profile";
+import type { BookSummary } from "../../../../shared/types/book";
 import {
     mockCurrentlyReading,
     mockFavoriteBooks,
@@ -15,11 +16,11 @@ export const profileRepository = {
         return { ...mockProfile };
     },
 
-    async getFavoriteBooks(): Promise<Book[]> {
+    async getFavoriteBooks(): Promise<BookSummary[]> {
         return [ ...mockFavoriteBooks ];
     },
 
-    async getCurrentlyReading(): Promise<Book[]> {
+    async getCurrentlyReading(): Promise<BookSummary[]> {
         return [ ...mockCurrentlyReading ];
     },
 

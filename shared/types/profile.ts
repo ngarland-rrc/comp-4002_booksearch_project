@@ -1,11 +1,3 @@
-export interface Book {
-    id: number;
-    title: string;
-    author: string;
-    // pubic/assets/book-cover
-    cover: string;
-}
-
 export interface ProfileInfo {
     username: string
     bio: string

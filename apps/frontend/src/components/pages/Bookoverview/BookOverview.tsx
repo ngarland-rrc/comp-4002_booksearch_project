@@ -86,10 +86,12 @@ function BookOverview({
 
     return (
     <div className="overview">
-      <img className="cover_img" src={book.image} alt={book.title} />
+      <img className="cover_img" src={book.cover} alt={book.title} />
       <div className="overview_text">
         <h2>{book.title}</h2>
-        <p className="author">By: {book.author}</p>
+        <p className="author">
+          By: {book.author}
+        </p>
         <Rating bookId={book.id} 
           ratings={ratings} 
           setRating={() =>{}}
