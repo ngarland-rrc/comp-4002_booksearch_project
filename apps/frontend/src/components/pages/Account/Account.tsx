@@ -21,9 +21,16 @@ function Account() {
 
   // Fetch initial recipient data on component mount (with mock data & localStorage fallback)
   useEffect(() => {
-    const data = recipientService.getRecipients()
-    setRecipients(data)
-  }, [])
+  const fetchRecipients = async () => {
+    try {
+      const data = await recipientService.getRecipients()
+      setRecipients(data)
+    } catch (error) {
+      console.error("Failed to fetch recipients:", error)
+    }
+  }
+  fetchRecipients()
+}, [])
 
   // Adapter functions: RecipientForm expects a string-based setter ((val: string) => void),
   // but useFormInput provides an event-based onChange. These handlers bridge the two.
@@ -40,24 +47,25 @@ function Account() {
   }
 
   // Add a new recipient, persist it to localStorage, and update state
-  const addRecipient = () => {
-    // Check if any of the field values are empty
+  const addRecipient = async () => {
     if (!name.value || !phone.value || !address.value) return
     
-    // Call service to save the new recipient and get the updated list
-    const updatedList = recipientService.addRecipient({ 
-      name: name.value, 
-      phone: phone.value, 
-      address: address.value 
-    })
-    
-    // Update local state to trigger a re-render
-    setRecipients(updatedList)
-    
-    // Clear all form inputs using the hook's built-in reset function
-    name.reset()
-    phone.reset()
-    address.reset()
+    try {
+      const newRecord = await recipientService.addRecipient({ 
+        name: name.value, 
+        phone: phone.value, 
+        address: address.value 
+      })
+      
+      // 把后端返回的新记录加到列表头部
+      setRecipients((prev) => [newRecord, ...prev])
+      
+      name.reset()
+      phone.reset()
+      address.reset()
+    } catch (error) {
+      console.error("Failed to add recipient:", error)
+    }
   }
 
   // Delete a recipient from the list by its index
