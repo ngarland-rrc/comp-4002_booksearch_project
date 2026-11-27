@@ -1,14 +1,19 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./Main.css"
-import initialBooks from '../../../mockData/books';
-import Rating, { type RatingProps } from '../../common/book_rating/Rating';
+import Rating from '../../common/book_rating/Rating';
+import type { Book } from '../../../../../../shared/types/book';
 
-function Main({ ratings,}: RatingProps) {
+interface MainProps {
+  books: Book[];
+  ratings: Record<number, number>;
+}
+
+function Main({ books, ratings,}: MainProps) {
 
   const [search, setSearch] = useState('')
 
-  const filteredBooks = initialBooks.filter((book) =>
+  const filteredBooks = books.filter((book) =>
     book.title.toLowerCase().includes(search.toLowerCase())
   )
 

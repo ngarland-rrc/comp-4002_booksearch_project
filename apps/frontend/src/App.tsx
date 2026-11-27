@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Footer from './components/common/footer/Footer'
 import Header from './components/common/header/Header'
@@ -9,7 +9,7 @@ import Profile from './components/pages/Profile/Profile'
 import News from './components/pages/News/News'
 import Social from './components/pages/Social/Social'
 import BookOverview from './components/pages/Bookoverview/BookOverview'
-import initialBooks from './mockData/books'
+import { bookService } from './services/bookService'
 import type { Book } from '../../../shared/types/book'
 
 function App() {
@@ -17,7 +17,20 @@ function App() {
   
   const [ratings, setRatings] = useState<Record<number, number>>({})
 
-  const [books, setBooks] = useState<Book[]>(initialBooks);
+  const [books, setBooks] = useState<Book[]>([]);
+
+  useEffect(() => {
+    async function loadBooks() {
+      try {
+        const books = await bookService.getBooks()
+        setBooks(books)
+      } catch (error) {
+        console.error("Failed to load books:", error)
+      }
+    }
+    
+    loadBooks()
+  }, [])
   
   const setRating = (bookId: number, value: number) => {
   setRatings((prev) => ({ ...prev, [bookId]: value }))

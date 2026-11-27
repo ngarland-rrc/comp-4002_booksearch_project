@@ -3,6 +3,7 @@ import { PrismaPg } from '@prisma/adapter-pg'
 import { faker } from '@faker-js/faker'
 // prisma/seed.ts
 import { PrismaClient } from '../src/generated/prisma/client.ts'
+import books from "./data/book.json" with { type: "json" };
  
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL })
 const prisma = new PrismaClient({ adapter })
@@ -22,7 +23,16 @@ async function main() {
  
   await prisma.comment.createMany({ data: comments })
  
-  console.log(`Seeded ${COMMENT_COUNT} comments.`)
+  console.log(`Seeded ${COMMENT_COUNT} comments.`);
+
+  // Clear existing books
+  await prisma.book.deleteMany();
+  
+  // Add book
+  await prisma.book.createMany({ 
+    data: books.map(({ id, reviews, ...book}) => book) });
+
+  console.log(`Seeded ${books.length} books.`);
 }
  
 main()

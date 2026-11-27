@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import type { Request, Response, NextFunction } from "express";
+import { bookRoutes } from "./routes/bookRoutes";
 
 const app = express();
 
@@ -14,6 +15,9 @@ if (!frontendUrl) {
 
 app.use(cors({ origin: frontendUrl }));
 app.use(express.json());
+
+// Book routes
+app.use("/api/books", bookRoutes);
 
 // Test to make sure API is running
 app.get("/", (req: Request, res: Response) => {
