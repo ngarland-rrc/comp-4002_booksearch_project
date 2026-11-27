@@ -27,8 +27,8 @@ profileService.ts
 
 ### What does the service do?
 
-Services holds all business logic so I implemented that for my profile service. loadProfile fetches the profile, both book lists, and the comments from the repository,
-sorts the comments newest first and converts each comment into a display ready CommentView with a formatted date, addComment trims the text. deleteComment passes the delete request through to the repository.
+Services holds all business logic so I implemented that for my profile service. loadProfile sends requests for the profile, both book lists, and the comments from the repository,
+sorts the comments newest first and converts each comment into a display ready CommentView with a formatted date, addComment trims the text and passes the request to the repository. deleteComment passes the delete request through to the repository.
 
 ### How did i decide what logic to include in the service?
 

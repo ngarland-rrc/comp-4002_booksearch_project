@@ -47,7 +47,6 @@ export const profileService = {
     },
 
     async addComment(rawText: string): Promise<CommentView | null> {
-        
         const text = rawText.trim();
         if (!text) return null;
 
