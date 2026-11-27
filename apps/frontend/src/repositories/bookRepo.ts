@@ -2,7 +2,7 @@
 import type { Book } from "../../../../shared/types/book";
 import type { Review } from "../../../../shared/types/review";
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const baseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000";
 const endpoint = `${baseUrl}/api/books`;
 
 async function readJson<T>(
