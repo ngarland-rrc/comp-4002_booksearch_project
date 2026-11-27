@@ -15,6 +15,13 @@ if (!frontendUrl) {
 app.use(cors({ origin: frontendUrl }));
 app.use(express.json());
 
+// Test to make sure API is running
+app.get("/", (req: Request, res: Response) => {
+    res.status(200).json({
+        message: "Book Search API is running!"
+    });
+});
+
 // Error handling middleware
 app.use((
     error: unknown,
