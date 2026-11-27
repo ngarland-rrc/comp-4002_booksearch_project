@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import type { Request, Response, NextFunction } from "express";
+import { bookRoutes } from "./routes/bookRoutes";
 import accountAddressRouter from './routes/AccountAddressRoutes';
 import commentRoutes from "./routes/CommentRoutes";
 
@@ -18,6 +19,16 @@ app.use(cors({ origin: frontendUrl }));
 app.use(express.json());
 app.use('/api/addresses', accountAddressRouter);
 app.use('/api/comments', commentRoutes);
+
+// Book routes
+app.use("/api/books", bookRoutes);
+
+// Test to make sure API is running
+app.get("/", (req: Request, res: Response) => {
+    res.status(200).json({
+        message: "Book Search API is running!"
+    });
+});
 
 // Error handling middleware
 app.use((

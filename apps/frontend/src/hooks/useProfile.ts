@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { profileService } from "../services/profileService";
 import type { CommentView, ProfileInfo } from "../../../../shared/types/profile";
+import type { BookSummary } from "../../../../shared/types/book";
+
+export function useProfile() {
+    const [profile, setProfile] = useState<ProfileInfo | null>(null);
+    const [favoriteBooks, setFavoriteBooks] = useState<BookSummary[]>([]);
+    const [currentlyReading, setCurrentlyReading] = useState<BookSummary[]>([]);
 
 type ProfileData = Awaited<ReturnType<typeof profileService.loadProfile>>;
 
