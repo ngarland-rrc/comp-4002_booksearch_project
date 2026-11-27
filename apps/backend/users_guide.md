@@ -12,6 +12,10 @@ Copy this into a .env file --> DATABASE_URL="postgresql://booksearch:booksearchd
 
 docker-compose up -d
 
+## Change Directory
+
+cd to apps/backend
+
 ## 4. Generate the client
 
 npx prisma generate --config prisma7.config.ts
