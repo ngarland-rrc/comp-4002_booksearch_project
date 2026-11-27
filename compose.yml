@@ -1,14 +1,14 @@
-version: '3.8'
 services:
   postgres:
-    image: postgres:10.3
-    restart: always
+    image: postgres:17
     environment:
       - POSTGRES_USER=booksearch
       - POSTGRES_PASSWORD=booksearchdevteam
-    volumes:
-      - postgres:/var/lib/postgresql/data
+      - POSTGRES_DB=booksearch
     ports:
-      - '5432:5432'
+      - '5433:5432'
+    volumes:
+      - booksearch_data:/var/lib/postgresql/data
+
 volumes:
-  postgres:
+  booksearch_data:
