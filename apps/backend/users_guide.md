@@ -15,15 +15,15 @@ docker-compose up -d
 ## 4. Generate the client
 
 1. **cd apps/backend**
-2. npx prisma generate --config prisma7.config.ts
+2. npx prisma generate
 
 ## 5. Create the tables
 
-npx prisma migrate dev --name init --config prisma7.config.ts
+npx prisma migrate dev
 
 ## 6. Seed the data
 
-npx prisma db seed --config prisma7.config.ts
+npx prisma db seed
 
 ## 7. Start the backend
 

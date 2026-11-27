@@ -1,12 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { profileService } from "../services/profileService";
 import type { CommentView, ProfileInfo } from "../../../../shared/types/profile";
-import type { BookSummary } from "../../../../shared/types/book";
-
-export function useProfile() {
-    const [profile, setProfile] = useState<ProfileInfo | null>(null);
-    const [favoriteBooks, setFavoriteBooks] = useState<BookSummary[]>([]);
-    const [currentlyReading, setCurrentlyReading] = useState<BookSummary[]>([]);
 
 type ProfileData = Awaited<ReturnType<typeof profileService.loadProfile>>;
 
@@ -22,7 +16,8 @@ export function useProfile() {
     useEffect(() => {
         let cancelled = false;
 
-        profileService.loadProfile()
+        profileService
+            .loadProfile()
             .then((data) => {
                 if (cancelled) return;
                 setProfile(data.profile);
@@ -32,14 +27,14 @@ export function useProfile() {
             })
             .catch(() => {
                 if (!cancelled) setError("Could not load the profile.");
-            }).finally(() => {
+            })
+            .finally(() => {
                 if (!cancelled) setLoading(false);
             });
 
         return () => {
             cancelled = true;
         };
-        
     }, []);
 
     const addComment = useCallback(async () => {
@@ -48,8 +43,9 @@ export function useProfile() {
             if (!created) return;
             setComments((prev) => [created, ...prev]);
             setDraft("");
+            setError(null);
         } catch {
-            setError("Could not post your comment. Try again.")
+            setError("Could not post your comment. Try again.");
         }
     }, [draft]);
 
@@ -57,8 +53,9 @@ export function useProfile() {
         try {
             await profileService.deleteComment(id);
             setComments((prev) => prev.filter((c) => c.id !== id));
+            setError(null);
         } catch {
-            setError("Could not delete the comment. Try again.")
+            setError("Could not delete the comment. Try again.");
         }
     }, []);
 
