@@ -30,8 +30,11 @@ npx prisma db seed --config prisma7.config.ts
 
 ## 7. Start the backend
 
-npm run dev
+change your directory to root so the concurrently script can run the frontend and backend simutaniously
+
+npm run dev to start the vite frontend and the node backend.
 
 ## 8. (Optional) Verify Postgresql functionality by testing an endpoint or using pgadmin4
 
+cd apps/backend
 npx prisma studio in bash to view the prisma client in the prisma studio software
