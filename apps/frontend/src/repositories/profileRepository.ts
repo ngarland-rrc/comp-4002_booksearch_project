@@ -6,9 +6,8 @@ import {
     mockProfile,
 } from "../mockData/profileMockData";
 
-// Local comment storage
-let comments: Comment[] = [];
-let nextCommentId = 1;
+const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
+const COMMENTS_URL = `${API_BASE}/api/comments`;
 
 // async methods so still functional when backend is introduced next sprint
 export const profileRepository = {
@@ -25,20 +24,23 @@ export const profileRepository = {
     },
 
     async getComments(): Promise<Comment[]> {
-        return [ ...comments ];
+        const res = await fetch(COMMENTS_URL);
+        if (!res.ok) throw new Error("Failed to load comments");
+        return res.json();
     },
 
     async addComment(text: string): Promise<Comment> {
-        const comment: Comment = {
-            id: nextCommentId++,
-            text,
-            createdAt: new Date().toISOString(),
-        };
-        comments = [comment, ...comments];
-        return comment;
+        const res = await fetch(COMMENTS_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text }),
+        });
+        if (!res.ok) throw new Error("Failed to post comment");
+        return res.json();
     },
 
     async deleteComment(id: number): Promise<void> {
-        comments = comments.filter((c) => c.id !== id);
+        const res = await fetch(`${COMMENTS_URL}/${id}`, { method: "DELETE" });
+        if (!res.ok) throw new Error("Failed to delete comment");
     },
 };

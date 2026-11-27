@@ -12,13 +12,10 @@ Copy this into a .env file --> DATABASE_URL="postgresql://booksearch:booksearchd
 
 docker-compose up -d
 
-## Change Directory
-
-cd to apps/backend
-
 ## 4. Generate the client
 
-npx prisma generate --config prisma7.config.ts
+1. **cd apps/backend**
+2. npx prisma generate --config prisma7.config.ts
 
 ## 5. Create the tables
 
@@ -30,8 +27,11 @@ npx prisma db seed --config prisma7.config.ts
 
 ## 7. Start the backend
 
-npm run dev
+1. **change your directory to root (cd ../..)** so the concurrently script can run the frontend and backend simutaniously
 
-## 8. (Optional) Verify Postgresql functionality by testing an endpoint or using pgadmin4
+2. npm run dev to start the vite frontend and the node backend.
 
-npx prisma studio in bash to view the prisma client in the prisma studio software
+## 8. (Optional) Verify Postgresql functionality by testing an endpoint or using pgadmin4, or view the schema
+
+1. Start a new bash terminal since your other terminal is busy running the frontend and backend
+2. **cd apps/backend** and enter npx prisma studio into the bash terminal
