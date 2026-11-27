@@ -28,4 +28,10 @@ export class CommentRepository {
             data: { text },
         });
     }
+
+    /** Deletes a comment by id. */
+    async delete(id: number) {
+        const result = await prisma.comment.deleteMany({ where: { id } });
+        return result.count > 0;
+    }
 }
