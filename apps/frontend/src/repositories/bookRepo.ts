@@ -1,5 +1,6 @@
 
 import type { Book } from "../../../../shared/types/book";
+import type { Review } from "../../../../shared/types/review";
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const endpoint = `${baseUrl}/api/books`;
@@ -41,5 +42,21 @@ export const bookRepository = {
     });
 
     return readJson<Book>(response);
+  },
+  
+  async createReview(
+      bookId: number,
+      review: Omit<Review, "id" | "bookId">
+  ): Promise<Review> {
+      const response = await fetch(`${endpoint}/${bookId}/reviews`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(review)
+      });
+
+      return readJson<Review>(response);
   }
+
 };

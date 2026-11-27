@@ -1,6 +1,7 @@
 
 import type { Book } from "../../../../shared/types/book";
 import { bookRepository } from "../repositories/bookRepo";
+import type { Review } from "../../../../shared/types/review";
 
 function validateBook(input: Omit<Book, "id" | "reviews">): void {
     const errors: string[] = [];
@@ -59,4 +60,19 @@ export const bookService = {
 
         return bookRepository.update(id, bookInput);
     },
+    
+    async addReview(
+        bookId: number,
+        review: Omit<Review, "id" | "bookId">
+    ): Promise<Review> {
+        if (!Number.isInteger(bookId) || bookId < 1) {
+            throw new Error("Invalid book ID.");
+        }
+
+        if (!review.reviewerName.trim() || !review.reviewText.trim()) {
+            throw new Error("Name and review text are required.");
+        }
+
+    return bookRepository.createReview(bookId, review);
+}
 };

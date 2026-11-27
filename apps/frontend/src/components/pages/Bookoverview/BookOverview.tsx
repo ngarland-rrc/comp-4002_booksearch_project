@@ -1,7 +1,6 @@
 import "./BookOverview.css";
 import React, {useState} from "react";
 import type { Book } from "../../../../../../shared/types/book";
-import type { Review } from "../../../../../../shared/types/review";
 import { Link } from 'react-router-dom';
 import Rating from "../../common/book_rating/Rating";
 import type { RatingProps } from "../../common/book_rating/Rating";
@@ -39,51 +38,52 @@ function BookOverview({
   const reviews = book.reviews ?? [];
 
   const addReview = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!text.trim() || !name.trim()) return;
+      e.preventDefault();
 
-    const newReview: Review = {
-      id: Date.now(),
-      reviewerName: name,
-      reviewText: text,
-      userRating: formRating
-    };
+      if (!text.trim() || !name.trim()) return;
 
-  // Creates review average from reviews in array
-  const updated = [newReview, ...reviews];
-  const newAverage =
-    updated.reduce((sum, r) => sum + r.userRating, 0) / updated.length;
+      try {
+          // Save the review 
+          const savedReview = await bookService.addReview(book.id, {
+              reviewerName: name,
+              reviewText: text,
+              userRating: formRating
+          });
 
-  // Creates updated book with the new review
-  const updatedBook: Book = {
-    ...book,
-    reviews: updated
-  };
+          // Add the saved review to the displayed reviews
+          const updatedReviews = [savedReview, ...reviews];
 
-  // Saves updated book through the service
-  const savedBook = await bookService.updateBook(book.id, updatedBook);
+          const updatedBook: Book = {
+              ...book,
+              reviews: updatedReviews
+          };
 
-  if (!savedBook) {
-    return;
-  }
+          // Updates the current book
+          setBook(updatedBook);
 
-  setBook(savedBook);
+          // Updates the parent books array
+          setBooks((prevBooks) =>
+              prevBooks.map((b) =>
+                  b.id === updatedBook.id ? updatedBook : b
+              )
+          );
 
-  // Updates the parent books array
-  setBooks((prevBooks) =>
-    prevBooks.map((b) =>
-      b.id === savedBook.id ? savedBook : b
-    )
-  );
+          // Update the average rating
+          const newAverage =
+              updatedReviews.reduce(
+                  (sum, review) => sum + review.userRating, 0
+              ) / updatedReviews.length;
 
-  setRating(book.id, Math.round(newAverage));
+          setRating(book.id, Math.round(newAverage));
 
-  setText("");
-  setName("");
-  setFormRating(5);
-  
-  };
+          setText("");
+          setName("");
+          setFormRating(5);
 
+      } catch (error) {
+          console.error("Failed to save review:", error);
+      }
+};
     return (
     <div className="overview">
       <img className="cover_img" src={book.cover} alt={book.title} />

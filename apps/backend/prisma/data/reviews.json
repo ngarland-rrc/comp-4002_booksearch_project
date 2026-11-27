@@ -1,0 +1,39 @@
+
+[
+  {
+    "reviewerName": "Alex",
+    "reviewText": "A really helpful book. The explanations are easy to follow and the examples make learning French much easier.",
+    "userRating": 5,
+    "bookId": 1
+  },
+  {
+    "reviewerName": "Jordan",
+    "reviewText": "Good content overall, but some sections could use more examples. Still a great resource for studying.",
+    "userRating": 4,
+    "bookId": 1
+  },
+  {
+    "reviewerName": "Taylor",
+    "reviewText": "I found this book very useful for improving my French grammar. Definitely recommend it.",
+    "userRating": 5,
+    "bookId": 2
+  },
+  {
+    "reviewerName": "Morgan",
+    "reviewText": "The explanations are clear, although I wish there were more practice exercises.",
+    "userRating": 4,
+    "bookId": 2
+  },
+  {
+    "reviewerName": "Sam",
+    "reviewText": "A decent introduction to French. Some concepts take a little time to understand.",
+    "userRating": 3,
+    "bookId": 3
+  },
+  {
+    "reviewerName": "Jamie",
+    "reviewText": "Great book with useful examples. It has helped me become more confident in my studies.",
+    "userRating": 5,
+    "bookId": 3
+  }
+]

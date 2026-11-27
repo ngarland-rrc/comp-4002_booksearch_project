@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { profileService } from "../services/profileService";
-import type { Book, CommentView, ProfileInfo } from "../../../../shared/types/profile";
+import type { CommentView, ProfileInfo } from "../../../../shared/types/profile";
+import type { BookSummary } from "../../../../shared/types/book";
 
 export function useProfile() {
     const [profile, setProfile] = useState<ProfileInfo | null>(null);
-    const [favoriteBooks, setFavoriteBooks] = useState<Book[]>([]);
-    const [currentlyReading, setCurrentlyReading] = useState<Book[]>([]);
+    const [favoriteBooks, setFavoriteBooks] = useState<BookSummary[]>([]);
+    const [currentlyReading, setCurrentlyReading] = useState<BookSummary[]>([]);
     const [comments, setComments] = useState<CommentView[]>([]);
     const [draft, setDraft] = useState("");
     const [loading, setLoading] = useState(true);

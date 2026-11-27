@@ -24,6 +24,23 @@ function App() {
       try {
         const books = await bookService.getBooks()
         setBooks(books)
+
+        const initialRatings: Record<number,number> = {}
+
+        books.forEach((book) =>{
+          if (book.reviews.length > 0) {
+            const total = book.reviews.reduce(
+              (sum, review) => sum + review.userRating, 0
+            )
+
+            initialRatings[book.id] = Math.round(
+              total / book.reviews.length
+            )
+          }
+        })
+
+        setRatings(initialRatings)
+      
       } catch (error) {
         console.error("Failed to load books:", error)
       }
